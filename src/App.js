@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React , {useReducer} from 'react';
 import './App.css';
-
+import Input from './Input';
+import Reducer from './Reducer';
+import {Context} from './Context';
+const initialState = {
+	name : 'bao bao'
+}
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [state,ditpatch] = useReducer(Reducer,initialState);
+  	return (
+    	<Context.Provider value={{state,ditpatch}}>
+      		<div>
+        		<Input />
+      		</div>
+    	</Context.Provider>
+  	);
 }
 
 export default App;
+
