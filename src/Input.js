@@ -1,12 +1,20 @@
-import React , { useContext} from 'react';
-import {Context} from './Context';
+import React, { useContext, useState } from 'react';
+import { Context } from './Context';
 
-function Input(){
-    const { state , ditpatch } = useContext(Context);
+function Input() {
+    const { ditpatch } = useContext(Context);
+    const [name, setName] = useState('');
+    const onSubmit = (e) => {
+        e.preventDefault();
+        ditpatch({ type: 'ADD', data: name });
+        setName('');
+    }
+
     return (
-        <div>
-            <h1>{state.name}</h1>
-			<button onClick={() => ditpatch({type:'EDIT',data:'pham ngoc thoai ky'})}>EDIT NAME</button>
+        <div style={{ margin: 'auto', width: '500px' }}>
+            <form onSubmit={onSubmit} >
+                <input className="form-control" style={{ marginTop: '20px' }} value={name} onChange={(e) => setName(e.target.value)} />
+            </form>
         </div>
     );
 }

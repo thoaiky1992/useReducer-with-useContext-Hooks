@@ -3,8 +3,16 @@ import './App.css';
 import Input from './Input';
 import Reducer from './Reducer';
 import {Context} from './Context';
+import List from './List';
 const initialState = {
-	name : 'bao bao'
+	data : [
+		{
+			name : 'Ky'
+		},
+		{
+			name : 'bao'
+		},
+	]
 }
 function App() {
 	const [state,ditpatch] = useReducer(Reducer,initialState);
@@ -12,6 +20,7 @@ function App() {
     	<Context.Provider value={{state,ditpatch}}>
       		<div>
         		<Input />
+				<List/>
       		</div>
     	</Context.Provider>
   	);

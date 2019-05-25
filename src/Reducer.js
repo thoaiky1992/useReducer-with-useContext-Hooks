@@ -1,8 +1,8 @@
 
 const Reducer = (state,action) => {
 	switch (action.type) {
-		case 'EDIT':
-			return { ...state,name:action.data}
+		case 'ADD': state.data.push({ name : action.data} );
+			return {...state};
 		default:
 			return state;
 	}
